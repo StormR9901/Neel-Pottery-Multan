@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#134074" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="description" content="Neel Pottery Multan — Shop authentic handmade blue pottery online. Vases, bowls, plates &amp; tea sets crafted in Multan, delivered across Pakistan." />
+  <title>Neel Pottery Multan | Buy Handmade Blue Pottery Online</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%231a4a7a'/><circle cx='50' cy='50' r='28' fill='none' stroke='%23fff' stroke-width='3'/><circle cx='50' cy='38' r='7' fill='%2360a5fa'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Announcement bar -->
+  <div class="announce-bar">
+  <div class="container announce-inner">
+    <span>🚚 Free delivery in Multan on orders above Rs. 3,000</span>
+    <span class="announce-divider">|</span>
+    <span>📦 Nationwide shipping across Pakistan</span>
+    <span class="announce-divider">|</span>
+    <a href="https://wa.me/923001234567" target="_blank" rel="noopener">Order on WhatsApp</a>
+  </div>
+  </div>
+
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Store navigation">
+      <a href="#top" class="logo">
+        <svg class="logo-svg" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="url(#lg)"/><circle cx="18" cy="18" r="10" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><circle cx="18" cy="13" r="3" fill="rgba(255,255,255,.8)"/><defs><linearGradient id="lg" x1="0" y1="0" x2="36" y2="36"><stop offset="0%" stop-color="#3b82c4"/><stop offset="100%" stop-color="#0f2d52"/></linearGradient></defs></svg>
+        <span class="logo-text">Neel Pottery<em>Multan</em></span>
+      </a>
+
+      <ul class="nav-links nav-links--desktop">
+        <li><a href="#shop" data-nav>Shop</a></li>
+        <li><a href="#categories" data-nav>Categories</a></li>
+        <li><a href="#about" data-nav>Our Craft</a></li>
+        <li><a href="#reviews" data-nav>Reviews</a></li>
+        <li><a href="#contact" data-nav>Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/923001234567" class="nav-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.117 1.528 5.847L0 24l6.335-1.662A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.01-1.374l-.36-.214-3.76.987 1.004-3.66-.234-.375A9.818 9.818 0 1112 21.818z"/></svg>
+        </a>
+        <button class="cart-btn" id="cart-toggle" type="button" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6h15l-1.5 9H7.5L6 6z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6L5 3H2"/></svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile menu (outside header so it layers correctly) -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop"></div>
+    <nav class="mobile-menu-panel" aria-label="Mobile navigation">
+      <div class="mobile-menu-top">
+        <span class="mobile-menu-title">Menu</span>
+        <button type="button" class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+      </div>
+      <a href="#shop" class="mobile-menu-link" data-nav>Shop</a>
+      <a href="#categories" class="mobile-menu-link" data-nav>Categories</a>
+      <a href="#about" class="mobile-menu-link" data-nav>Our Craft</a>
+      <a href="#reviews" class="mobile-menu-link" data-nav>Reviews</a>
+      <a href="#contact" class="mobile-menu-link" data-nav>Contact</a>
+      <a href="https://wa.me/923001234567" class="mobile-menu-wa" target="_blank" rel="noopener">Order on WhatsApp</a>
+    </nav>
+  </div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <p class="hero-tag">نیل پوٹری · Handmade in Multan</p>
+          <h1>Authentic Blue Pottery,<br /><em>Delivered to Your Door</em></h1>
+          <p class="hero-lead">Shop centuries-old Multan blue pottery — hand-painted vases, bowls, plates, and tea sets made by local artisans in the heart of Punjab.</p>
+          <div class="hero-actions">
+            <a href="#shop" class="btn btn-primary">Shop Now</a>
+            <a href="#about" class="btn btn-outline">Our Story</a>
+          </div>
+          <div class="hero-trust">
+            <div><strong>500+</strong><span>Happy customers</span></div>
+            <div><strong>100%</strong><span>Handmade</span></div>
+            <div><strong>COD</strong><span>Available</span></div>
+          </div>
+        </div>
+        <div class="hero-visual reveal reveal-delay">
+          <div class="img-placeholder img-placeholder--hero" aria-label="Hero image placeholder">
+            <span>Hero Image</span>
+          </div>
+          <div class="hero-price-tag">
+            <span>From</span>
+            <strong>Rs. 1,200</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+      <div class="container">
+        <div class="cat-grid">
+          <a href="#shop" class="cat-card reveal" data-filter="vases">
+            <div class="cat-icon">🏺</div>
+            <h3>Vases &amp; Urns</h3>
+            <span>12 products</span>
+          </a>
+          <a href="#shop" class="cat-card reveal reveal-delay" data-filter="bowls">
+            <div class="cat-icon">🥣</div>
+            <h3>Bowls</h3>
+            <span>8 products</span>
+          </a>
+          <a href="#shop" class="cat-card reveal reveal-delay-2" data-filter="plates">
+            <div class="cat-icon">🍽️</div>
+            <h3>Plates &amp; Trays</h3>
+            <span>10 products</span>
+          </a>
+          <a href="#shop" class="cat-card reveal reveal-delay-3" data-filter="tea">
+            <div class="cat-icon">🫖</div>
+            <h3>Tea Sets</h3>
+            <span>6 products</span>
+          </a>
+          <a href="#shop" class="cat-card reveal reveal-delay-3" data-filter="decor">
+            <div class="cat-icon">✨</div>
+            <h3>Home Décor</h3>
+            <span>9 products</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section class="shop section" id="shop">
+      <div class="container">
+        <div class="shop-header reveal">
+          <div>
+            <p class="eyebrow">Online Store</p>
+            <h2>Shop Our Collection</h2>
+          </div>
+          <div class="shop-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="vases">Vases</button>
+            <button class="filter-btn" data-filter="bowls">Bowls</button>
+            <button class="filter-btn" data-filter="plates">Plates</button>
+            <button class="filter-btn" data-filter="tea">Tea Sets</button>
+            <button class="filter-btn" data-filter="decor">Décor</button>
+          </div>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+          <article class="product-card reveal" data-category="vases" data-id="1" data-name="Product 1" data-price="4500">
+            <div class="product-img product-img--placeholder" aria-label="Product image placeholder">
+              <span>Image</span>
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Vases</p>
+              <h3>Product Name</h3>
+              <div class="product-price-row">
+                <span class="price-now">Rs. 4,500</span>
+              </div>
+              <button class="btn btn-cart add-to-cart" type="button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay" data-category="bowls" data-id="2" data-name="Product 2" data-price="2800">
+            <div class="product-img product-img--placeholder" aria-label="Product image placeholder">
+              <span>Image</span>
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Bowls</p>
+              <h3>Product Name</h3>
+              <div class="product-price-row">
+                <span class="price-now">Rs. 2,800</span>
+              </div>
+              <button class="btn btn-cart add-to-cart" type="button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-2" data-category="plates" data-id="3" data-name="Product 3" data-price="5200">
+            <div class="product-img product-img--placeholder" aria-label="Product image placeholder">
+              <span>Image</span>
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Plates</p>
+              <h3>Product Name</h3>
+              <div class="product-price-row">
+                <span class="price-now">Rs. 5,200</span>
+              </div>
+              <button class="btn btn-cart add-to-cart" type="button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-3" data-category="tea" data-id="4" data-name="Product 4" data-price="7500">
+            <div class="product-img product-img--placeholder" aria-label="Product image placeholder">
+              <span>Image</span>
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Tea Sets</p>
+              <h3>Product Name</h3>
+              <div class="product-price-row">
+                <span class="price-now">Rs. 7,500</span>
+              </div>
+              <button class="btn btn-cart add-to-cart" type="button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-category="vases" data-id="5" data-name="Product 5" data-price="3200">
+            <div class="product-img product-img--placeholder" aria-label="Product image placeholder">
+              <span>Image</span>
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Vases</p>
+              <h3>Product Name</h3>
+              <div class="product-price-row">
+                <span class="price-now">Rs. 3,200</span>
+              </div>
+              <button class="btn btn-cart add-to-cart" type="button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay" data-category="decor" data-id="6" data-name="Product 6" data-price="1800">
+            <div class="product-img product-img--placeholder" aria-label="Product image placeholder">
+              <span>Image</span>
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Home Décor</p>
+              <h3>Product Name</h3>
+              <div class="product-price-row">
+                <span class="price-now">Rs. 1,800</span>
+              </div>
+              <button class="btn btn-cart add-to-cart" type="button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-2" data-category="bowls" data-id="7" data-name="Product 7" data-price="2400">
+            <div class="product-img product-img--placeholder" aria-label="Product image placeholder">
+              <span>Image</span>
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Bowls</p>
+              <h3>Product Name</h3>
+              <div class="product-price-row">
+                <span class="price-now">Rs. 2,400</span>
+              </div>
+              <button class="btn btn-cart add-to-cart" type="button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-3" data-category="plates" data-id="8" data-name="Product 8" data-price="1500">
+            <div class="product-img product-img--placeholder" aria-label="Product image placeholder">
+              <span>Image</span>
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Plates</p>
+              <h3>Product Name</h3>
+              <div class="product-price-row">
+                <span class="price-now">Rs. 1,500</span>
+              </div>
+              <button class="btn btn-cart add-to-cart" type="button">Add to Cart</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="why section section--cream">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Why Neel Pottery</p>
+          <h2>Direct from Multan's Workshops</h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card reveal">
+            <div class="why-icon">🎨</div>
+            <h3>100% Handmade</h3>
+            <p>Every piece is shaped and painted by hand in Multan — no mass production, no factories.</p>
+          </div>
+          <div class="why-card reveal reveal-delay">
+            <div class="why-icon">🏛️</div>
+            <h3>Centuries of Heritage</h3>
+            <p>Multan's blue pottery tradition dates back 800+ years, blending Persian and local Punjabi craft.</p>
+          </div>
+          <div class="why-card reveal reveal-delay-2">
+            <div class="why-icon">📦</div>
+            <h3>Safe Packaging</h3>
+            <p>Each item is bubble-wrapped and boxed so it reaches you in perfect condition anywhere in Pakistan.</p>
+          </div>
+          <div class="why-card reveal reveal-delay-3">
+            <div class="why-icon">💳</div>
+            <h3>Easy Payment</h3>
+            <p>Cash on delivery, JazzCash, EasyPaisa, and bank transfer — whatever works for you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Craft -->
+    <section class="about section" id="about">
+      <div class="container about-grid">
+        <div class="about-gallery reveal">
+          <div class="img-placeholder img-placeholder--main" aria-label="Image placeholder">
+            <span>Image</span>
+          </div>
+          <div class="img-placeholder img-placeholder--sub" aria-label="Image placeholder">
+            <span>Image</span>
+          </div>
+        </div>
+        <div class="about-text reveal reveal-delay">
+          <p class="eyebrow">Our Craft</p>
+          <h2>The Art of Multan Blue Pottery</h2>
+          <p>Multan has been the home of blue pottery — locally called <em>kashi work</em> — for over eight centuries. Our workshop in the old city continues this tradition using the same quartz-based paste, cobalt pigments, and hand-painting techniques passed down through generations.</p>
+          <p>Unlike ordinary clay pottery, Multan blue pottery is made from a unique blend of ground quartz, glass, and Multani mitti. Each piece is molded by hand, painted with copper oxide and cobalt blue, then fired at low temperature to create that signature brilliant blue glaze.</p>
+          <ul class="about-list">
+            <li>Workshop located in Multan, Punjab</li>
+            <li>Family-run business since 1987</li>
+            <li>Custom orders &amp; bulk gifting available</li>
+            <li>Export-quality finishing</li>
+          </ul>
+          <a href="#shop" class="btn btn-primary">Browse Products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews section section--cream" id="reviews">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Customer Reviews</p>
+          <h2>What Our Buyers Say</h2>
+          <div class="stars">★★★★★ <span>4.9 average · 500+ orders</span></div>
+        </div>
+        <div class="reviews-grid">
+          <div class="review-card reveal">
+            <div class="review-stars">★★★★★</div>
+            <p>"Ordered a tea set for my mother's birthday. Packaging was excellent and the blue colour is even more beautiful in person. Delivered to Lahore in 3 days."</p>
+            <footer><strong>Fatima K.</strong> · Lahore</footer>
+          </div>
+          <div class="review-card reveal reveal-delay">
+            <div class="review-stars">★★★★★</div>
+            <p>"Bought 3 vases for my home in Multan. Genuine handmade work — you can see the brush strokes. WhatsApp ordering was super easy."</p>
+            <footer><strong>Usman A.</strong> · Multan</footer>
+          </div>
+          <div class="review-card reveal reveal-delay-2">
+            <div class="review-stars">★★★★★</div>
+            <p>"Sent a plate set as a wedding gift to Karachi. They loved it! Will definitely order again for Eid gifts."</p>
+            <footer><strong>Ayesha R.</strong> · Islamabad</footer>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery -->
+    <section class="delivery section">
+      <div class="container delivery-inner reveal">
+        <div class="delivery-text">
+          <p class="eyebrow">Delivery &amp; Payment</p>
+          <h2>How to Order</h2>
+          <ol class="delivery-steps">
+            <li><span>1</span> Browse products and add to cart, or message us on WhatsApp</li>
+            <li><span>2</span> Confirm your order — we'll share payment details</li>
+            <li><span>3</span> We craft &amp; pack your items (1–3 business days)</li>
+            <li><span>4</span> Delivered via TCS/Leopard — track your parcel online</li>
+          </ol>
+        </div>
+        <div class="delivery-info">
+          <div class="info-box">
+            <h4>🚚 Shipping</h4>
+            <p>Multan: Rs. 150 · Punjab: Rs. 250 · Nationwide: Rs. 350–500</p>
+          </div>
+          <div class="info-box">
+            <h4>💰 Payment</h4>
+            <p>COD · JazzCash · EasyPaisa · Bank Transfer</p>
+          </div>
+          <div class="info-box">
+            <h4>↩️ Returns</h4>
+            <p>Damaged items replaced free within 48 hours of delivery</p>
+          </div>
+          <a href="https://wa.me/923001234567?text=Hi!%20I%20want%20to%20order%20blue%20pottery" class="btn btn-wa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.117 1.528 5.847L0 24l6.335-1.662A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <p class="eyebrow">Visit Us</p>
+          <h2>Get in Touch</h2>
+          <p>Have a question, custom order, or bulk inquiry? Reach out — we're based right here in Multan.</p>
+          <ul class="contact-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-11a4 4 0 017-4 4 4 0 017 4c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <div><strong>Address</strong><span>Hussain Agahi Bazaar, Multan, Punjab</span></div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <div><strong>Phone / WhatsApp</strong><span>+92 300 1234567</span></div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              <div><strong>Email</strong><span>hello@neelpottery.pk</span></div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <div><strong>Hours</strong><span>Mon–Sat: 10am – 8pm · Sunday: Closed</span></div>
+            </li>
+          </ul>
+        </div>
+        <form class="contact-form reveal reveal-delay" id="contact-form">
+          <h3>Send a Message</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="03XX XXXXXXX" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option>Product Inquiry</option>
+              <option>Custom Order</option>
+              <option>Bulk / Corporate Gifting</option>
+              <option>Order Status</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us what you're looking for..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+          <p class="form-feedback" id="form-feedback"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <svg class="logo-svg" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="url(#lg2)"/><circle cx="18" cy="18" r="10" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><defs><linearGradient id="lg2" x1="0" y1="0" x2="36" y2="36"><stop offset="0%" stop-color="#3b82c4"/><stop offset="100%" stop-color="#0f2d52"/></linearGradient></defs></svg>
+          <span class="logo-text">Neel Pottery<em>Multan</em></span>
+        </a>
+        <p>Authentic handmade blue pottery from the heart of Multan. Delivered across Pakistan.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#shop">All Products</a>
+        <a href="#shop" data-filter-link="vases">Vases</a>
+        <a href="#shop" data-filter-link="bowls">Bowls</a>
+        <a href="#shop" data-filter-link="tea">Tea Sets</a>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#about">Our Craft</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact">Delivery Info</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://wa.me/923001234567" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:hello@neelpottery.pk">Email</a>
+        <a href="tel:+923001234567">+92 300 1234567</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 Neel Pottery Multan. All rights reserved.</p>
+      <p>Handmade with pride in Multan, Pakistan 🇵🇰</p>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping cart">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" id="cart-close" type="button" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <p class="cart-empty" id="cart-empty">Your cart is empty</p>
+    </div>
+    <div class="cart-footer" id="cart-footer" hidden>
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cart-total">Rs. 0</strong>
+      </div>
+      <button class="btn btn-primary btn-full" id="checkout-btn">Checkout via WhatsApp</button>
+      <button class="btn btn-outline btn-full" id="clear-cart">Clear Cart</button>
+    </div>
+  </aside>
+
+  <!-- WhatsApp float -->
+  <a href="https://wa.me/923001234567?text=Hi!%20I%20want%20to%20order%20from%20Neel%20Pottery%20Multan" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.117 1.528 5.847L0 24l6.335-1.662A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+  </a>
+
+  <div class="toast" id="toast" role="alert"></div>
+  <script src="./script.js"></script>
+</body>
+</html>
