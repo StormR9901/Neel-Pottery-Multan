@@ -163,7 +163,8 @@ h3 { font-size: 1.2rem; }
 .hero-img {
   width: 100%;
   aspect-ratio: 5/6;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
 }
@@ -563,7 +564,7 @@ body.cart-open {
   .hero-trust span { font-size: 0.65rem; }
   .hero-price-tag { left: auto; right: 0.5rem; bottom: 0.5rem; padding: 0.55rem 0.85rem; }
   .hero-price-tag strong { font-size: 1.25rem; }
-  .hero-img { aspect-ratio: 16/10; max-height: 220px; }
+  .hero-img { aspect-ratio: 5/6; max-height: min(70vh, 520px); }
   .img-placeholder--hero { aspect-ratio: 16/10; max-height: 220px; }
 
   /* Categories — horizontal scroll */
