@@ -94,9 +94,8 @@
           </div>
         </div>
         <div class="hero-visual reveal reveal-delay">
-          <div class="img-placeholder img-placeholder--hero" aria-label="Hero image placeholder">
-            <span>Hero Image</span>
-          </div>
+          <!-- To change hero image: replace the src below with any image in the ./images/ folder -->
+          <img class="hero-img" src="./images/hero image combined.jpg" alt="Hero-image" width="600" height="720" />
           <div class="hero-price-tag">
             <span>From</span>
             <strong>Rs. 1,100</strong>
@@ -147,7 +146,7 @@
         <div class="product-grid" id="product-grid">
           <article class="product-card reveal" data-category="decor" data-id="1" data-name="Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)" data-price="1250">
             <div class="product-img">
-              <img src="./images/rearing-horse-figurine.png" alt="Ceramic Rearing Horse Statue" loading="lazy" width="400" height="400" />
+              <img src="./images/rearing-horse-figurine.jpg" alt="Ceramic Rearing Horse Statue" loading="lazy" width="400" height="400" />
             </div>
             <div class="product-body">
               <p class="product-cat">Home Décor</p>
@@ -304,12 +303,8 @@
     <section class="about section" id="about">
       <div class="container about-grid">
         <div class="about-gallery reveal">
-          <div class="img-placeholder img-placeholder--main" aria-label="Image placeholder">
-            <span>Image</span>
-          </div>
-          <div class="img-placeholder img-placeholder--sub" aria-label="Image placeholder">
-            <span>Image</span>
-          </div>
+          <img class="about-img about-img--main" src="./images/yellow-green-motif-vases.jpg" alt="Multani motif vases with yellow highlights" loading="lazy" width="500" height="625" />
+          <img class="about-img about-img--sub" src="./images/single-yellow-blue-floral-vase.jpg" alt="Elegant Multani floral ceramic vase" loading="lazy" width="250" height="250" />
         </div>
         <div class="about-text reveal reveal-delay">
           <p class="eyebrow">Our Craft</p>
@@ -333,24 +328,40 @@
         <div class="section-header reveal">
           <p class="eyebrow">Customer Reviews</p>
           <h2>What Our Buyers Say</h2>
-          <div class="stars">★★★★★ <span>4.9 average · 500+ orders</span></div>
+          <div class="stars reviews-summary" id="reviews-summary"></div>
         </div>
-        <div class="reviews-grid">
-          <div class="review-card reveal">
-            <div class="review-stars">★★★★★</div>
-            <p>"Ordered a tea set for my mother's birthday. Packaging was excellent and the blue colour is even more beautiful in person. Delivered to Lahore in 3 days."</p>
-            <footer><strong>Fatima K.</strong> · Lahore</footer>
-          </div>
-          <div class="review-card reveal reveal-delay">
-            <div class="review-stars">★★★★★</div>
-            <p>"Bought 3 vases for my home in Multan. Genuine handmade work — you can see the brush strokes. WhatsApp ordering was super easy."</p>
-            <footer><strong>Usman A.</strong> · Multan</footer>
-          </div>
-          <div class="review-card reveal reveal-delay-2">
-            <div class="review-stars">★★★★★</div>
-            <p>"Sent a plate set as a wedding gift to Karachi. They loved it! Will definitely order again for Eid gifts."</p>
-            <footer><strong>Ayesha R.</strong> · Islamabad</footer>
-          </div>
+        <div class="reviews-grid" id="reviews-grid"></div>
+        <div class="reviews-empty" id="reviews-empty">
+          <p>No reviews yet.</p>
+          <p>Be the first to share your experience!</p>
+        </div>
+        <div class="review-form-wrap reveal">
+          <h3>Leave a Review</h3>
+          <form id="review-form">
+            <div class="star-rating" id="star-rating" role="group" aria-label="Rating">
+              <button type="button" data-rating="1" aria-label="1 star">★</button>
+              <button type="button" data-rating="2" aria-label="2 stars">★</button>
+              <button type="button" data-rating="3" aria-label="3 stars">★</button>
+              <button type="button" data-rating="4" aria-label="4 stars">★</button>
+              <button type="button" data-rating="5" aria-label="5 stars">★</button>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="review-name">Your Name</label>
+                <input type="text" id="review-name" name="review-name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="review-city">City</label>
+                <input type="text" id="review-city" name="review-city" placeholder="e.g. Lahore" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="review-text">Your Review</label>
+              <textarea id="review-text" name="review-text" rows="3" placeholder="Tell others about your experience..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Submit Review</button>
+            <p class="form-feedback" id="review-feedback"></p>
+          </form>
         </div>
       </div>
     </section>

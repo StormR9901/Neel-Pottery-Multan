@@ -3,6 +3,13 @@
 
   var WA_NUMBER = "923056509572";
   var BRAND_NAME = "عمران جھنڈیر";
+  // Set your email here — contact form & review notifications go here (free via FormSubmit.co)
+  var OWNER_EMAIL = "";
+  var REVIEWS_KEY = "neel-pottery-reviews";
+  // Optional: Supabase for reviews visible to all visitors (free at supabase.com)
+  // Create a "reviews" table with columns: name (text), city (text), text (text), rating (int)
+  var SUPABASE_URL = "";
+  var SUPABASE_ANON_KEY = "";
   var cart = [];
 
   function $(sel) { return document.querySelector(sel); }
@@ -199,6 +206,244 @@
     }
   }
 
+  function escapeHtml(str) {
+    var div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function getReviews() {
+    try {
+      var stored = localStorage.getItem(REVIEWS_KEY);
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveReviews(reviews) {
+    localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+  }
+
+  function fetchReviewsFromCloud(callback) {
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+      callback(getReviews());
+      return;
+    }
+    fetch(SUPABASE_URL + "/rest/v1/reviews?select=*&order=created_at.desc", {
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: "Bearer " + SUPABASE_ANON_KEY
+      }
+    })
+      .then(function (res) { return res.ok ? res.json() : []; })
+      .then(function (data) { callback(data.length ? data : getReviews()); })
+      .catch(function () { callback(getReviews()); });
+  }
+
+  function submitReviewToCloud(review, callback) {
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+      var reviews = getReviews();
+      reviews.unshift(review);
+      saveReviews(reviews);
+      callback(true, reviews);
+      return;
+    }
+    fetch(SUPABASE_URL + "/rest/v1/reviews", {
+      method: "POST",
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: "Bearer " + SUPABASE_ANON_KEY,
+        "Content-Type": "application/json",
+        Prefer: "return=representation"
+      },
+      body: JSON.stringify({
+        name: review.name,
+        city: review.city,
+        text: review.text,
+        rating: review.rating
+      })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("failed");
+        return res.json();
+      })
+      .then(function () {
+        fetchReviewsFromCloud(function (reviews) { callback(true, reviews); });
+      })
+      .catch(function () {
+        var reviews = getReviews();
+        reviews.unshift(review);
+        saveReviews(reviews);
+        callback(true, reviews);
+      });
+  }
+
+  function notifyOwnerReview(review) {
+    var payload = {
+      name: review.name,
+      city: review.city,
+      rating: review.rating + " stars",
+      message: review.text,
+      _subject: "New review on " + BRAND_NAME + " website"
+    };
+    if (OWNER_EMAIL) {
+      fetch("https://formsubmit.co/ajax/" + encodeURIComponent(OWNER_EMAIL), {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload)
+      }).catch(function () {});
+    }
+  }
+
+  function renderStars(count) {
+    var stars = "";
+    for (var i = 1; i <= 5; i++) {
+      stars += i <= count ? "★" : "☆";
+    }
+    return stars;
+  }
+
+  function renderReviews(reviews) {
+    var grid = $("#reviews-grid");
+    var emptyEl = $("#reviews-empty");
+    var summaryEl = $("#reviews-summary");
+    if (!grid) return;
+
+    if (!reviews || reviews.length === 0) {
+      grid.innerHTML = "";
+      if (emptyEl) emptyEl.style.display = "block";
+      if (summaryEl) summaryEl.innerHTML = "";
+      return;
+    }
+
+    if (emptyEl) emptyEl.style.display = "none";
+
+    var totalRating = 0;
+    var html = "";
+    for (var i = 0; i < reviews.length; i++) {
+      var r = reviews[i];
+      totalRating += r.rating;
+      html += '<div class="review-card reveal">' +
+        '<div class="review-stars">' + renderStars(r.rating) + '</div>' +
+        '<p>"' + escapeHtml(r.text) + '"</p>' +
+        '<footer><strong>' + escapeHtml(r.name) + '</strong> · ' + escapeHtml(r.city) + '</footer>' +
+        '</div>';
+    }
+    grid.innerHTML = html;
+
+    if (summaryEl) {
+      var avg = (totalRating / reviews.length).toFixed(1);
+      summaryEl.innerHTML = renderStars(Math.round(totalRating / reviews.length)) +
+        ' <span>' + avg + ' average · ' + reviews.length + ' review' + (reviews.length === 1 ? '' : 's') + '</span>';
+    }
+  }
+
+  function initReviews() {
+    var reviewForm = $("#review-form");
+    var starRating = $("#star-rating");
+    var selectedRating = 0;
+
+    fetchReviewsFromCloud(renderReviews);
+
+    if (starRating) {
+      var starBtns = starRating.querySelectorAll("button");
+      for (var s = 0; s < starBtns.length; s++) {
+        starBtns[s].addEventListener("click", function () {
+          selectedRating = parseInt(this.getAttribute("data-rating"), 10);
+          for (var b = 0; b < starBtns.length; b++) {
+            starBtns[b].classList.toggle("active", parseInt(starBtns[b].getAttribute("data-rating"), 10) <= selectedRating);
+          }
+        });
+      }
+    }
+
+    if (reviewForm) {
+      reviewForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var nameEl = $("#review-name");
+        var cityEl = $("#review-city");
+        var textEl = $("#review-text");
+        var fb = $("#review-feedback");
+
+        if (!selectedRating) {
+          showToast("Please select a star rating");
+          return;
+        }
+        if (!nameEl || !nameEl.value.trim() || !cityEl || !cityEl.value.trim() || !textEl || !textEl.value.trim()) {
+          showToast("Please fill in all fields");
+          return;
+        }
+
+        var review = {
+          name: nameEl.value.trim(),
+          city: cityEl.value.trim(),
+          text: textEl.value.trim(),
+          rating: selectedRating,
+          date: new Date().toISOString()
+        };
+
+        var btn = reviewForm.querySelector('button[type="submit"]');
+        var origText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Submitting...";
+
+        submitReviewToCloud(review, function (ok, reviews) {
+          if (ok) {
+            renderReviews(reviews);
+            notifyOwnerReview(review);
+            reviewForm.reset();
+            selectedRating = 0;
+            if (starRating) {
+              var btns = starRating.querySelectorAll("button");
+              for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+            }
+            if (fb) fb.textContent = "Thank you! Your review has been posted.";
+            showToast("Review submitted — thank you!");
+            setTimeout(function () { if (fb) fb.textContent = ""; }, 5000);
+          } else {
+            showToast("Could not submit review — try again");
+          }
+          btn.textContent = origText;
+          btn.disabled = false;
+        });
+      });
+    }
+  }
+
+  function sendContactMessage(data, callback) {
+    var payload = {
+      name: data.name,
+      phone: data.phone,
+      subject: data.subject,
+      message: data.message,
+      _subject: "New message from " + BRAND_NAME + " website",
+      _template: "table"
+    };
+
+    if (OWNER_EMAIL) {
+      fetch("https://formsubmit.co/ajax/" + encodeURIComponent(OWNER_EMAIL), {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          if (res.ok) callback(true);
+          else callback(false);
+        })
+        .catch(function () { callback(false); });
+      return;
+    }
+
+    var waMsg = "New website message from " + BRAND_NAME + ":\n\n" +
+      "Name: " + data.name + "\n" +
+      "Phone: " + data.phone + "\n" +
+      "Subject: " + data.subject + "\n\n" +
+      data.message;
+    window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(waMsg), "_blank");
+    callback(true);
+  }
+
   function handleProductImageError(img) {
     var tried = img.getAttribute("data-tried") || "";
     var src = img.getAttribute("src") || "";
@@ -385,6 +630,7 @@
         e.preventDefault();
         var name = $("#name");
         var phone = $("#phone");
+        var subject = $("#subject");
         var message = $("#message");
         var valid = true;
         var fields = [name, phone, message];
@@ -398,18 +644,36 @@
         var orig = btn.textContent;
         btn.disabled = true;
         btn.textContent = "Sending...";
-        setTimeout(function () {
+
+        var formData = {
+          name: name.value.trim(),
+          phone: phone.value.trim(),
+          subject: subject ? subject.value : "General Inquiry",
+          message: message.value.trim()
+        };
+
+        sendContactMessage(formData, function (success) {
           var fb = $("#form-feedback");
-          if (fb) fb.textContent = "Message sent! We'll reply within 24 hours.";
-          showToast("Message sent successfully");
-          contactForm.reset();
+          if (success) {
+            if (fb) {
+              fb.textContent = OWNER_EMAIL
+                ? "Message sent! We'll reply within 24 hours."
+                : "Opening WhatsApp — tap Send to deliver your message to us.";
+            }
+            showToast(OWNER_EMAIL ? "Message sent successfully" : "Complete sending on WhatsApp");
+            contactForm.reset();
+          } else {
+            if (fb) fb.textContent = "Could not send. Please message us on WhatsApp instead.";
+            showToast("Send failed — try WhatsApp");
+          }
           btn.textContent = orig;
           btn.disabled = false;
-          setTimeout(function () { if (fb) fb.textContent = ""; }, 5000);
-        }, 1200);
+          setTimeout(function () { if (fb) fb.textContent = ""; }, 6000);
+        });
       });
     }
 
+    initReviews();
     initProductImages();
     updateCartUI();
   }
