@@ -1,4 +1,4 @@
-/* Neel Pottery Multan — Online Store */
+/* عمران جھنڈیر — Online Store */
 
 :root {
   --deep: #0a2340;
@@ -21,6 +21,7 @@
 
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-body: "DM Sans", system-ui, sans-serif;
+  --font-urdu: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
   --radius: 12px;
   --radius-lg: 20px;
   --shadow: 0 4px 24px rgba(10,35,64,.08);
@@ -106,7 +107,9 @@ h3 { font-size: 1.2rem; }
 .logo { display: flex; align-items: center; gap: .6rem; flex-shrink: 0; }
 .logo-svg { width: 34px; height: 34px; }
 .logo-text { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--deep); line-height: 1.1; }
+.logo-text--urdu { font-family: var(--font-urdu); font-size: 1.5rem; font-weight: 600; line-height: 1.35; }
 .logo-text em { display: block; font-style: normal; font-size: .65rem; font-family: var(--font-body); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--cobalt-mid); }
+[lang="ur"], .hero-tag { font-family: var(--font-urdu); }
 
 .nav-links--desktop { display: flex; align-items: center; gap: .15rem; }
 .nav-links--desktop a { padding: .5rem .9rem; font-size: .88rem; font-weight: 500; color: var(--ink-muted); border-radius: 100px; transition: all .25s; }
@@ -208,6 +211,7 @@ h3 { font-size: 1.2rem; }
 .product-body { padding: 1.1rem 1.2rem 1.25rem; }
 .product-cat { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--cobalt-mid); margin-bottom: .25rem; }
 .product-desc { font-size: .82rem; color: var(--ink-muted); margin: .3rem 0 .6rem; line-height: 1.55; }
+.product-body h3 span[lang="ur"] { font-family: var(--font-urdu); font-size: 0.95em; font-weight: 500; }
 .product-price-row { display: flex; align-items: baseline; gap: .5rem; }
 .price-now { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--cobalt); }
 .price-was { font-size: .85rem; color: var(--ink-light); text-decoration: line-through; }
@@ -479,6 +483,7 @@ body.cart-open {
   .nav-toggle { display: flex; }
   .nav-actions { gap: 0.25rem; }
   .logo-text { font-size: 1.1rem; }
+  .logo-text--urdu { font-size: 1.25rem; }
   .logo-svg { width: 28px; height: 28px; }
   .logo-text em { font-size: 0.58rem; }
 

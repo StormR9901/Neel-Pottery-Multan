@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  var WA_NUMBER = "923001234567";
+  var WA_NUMBER = "923056509572";
+  var BRAND_NAME = "عمران جھنڈیر";
   var cart = [];
 
   function $(sel) { return document.querySelector(sel); }
@@ -331,7 +332,7 @@
     if (checkoutBtn) {
       checkoutBtn.addEventListener("click", function () {
         if (cart.length === 0) return;
-        var msg = "Hi! I'd like to order from Neel Pottery Multan:\n\n";
+        var msg = "Hi! I'd like to order from " + BRAND_NAME + ":\n\n";
         for (var i = 0; i < cart.length; i++) {
           msg += "• " + cart[i].name + " x" + cart[i].qty + " — " + formatPrice(cart[i].price * cart[i].qty) + "\n";
         }
