@@ -199,6 +199,41 @@
     }
   }
 
+  function handleProductImageError(img) {
+    var tried = img.getAttribute("data-tried") || "";
+    var src = img.getAttribute("src") || "";
+
+    if (tried.indexOf("png") === -1 && /\.jpe?g$/i.test(src)) {
+      img.setAttribute("data-tried", tried + " png");
+      img.src = src.replace(/\.jpe?g$/i, ".png");
+      return;
+    }
+    if (tried.indexOf("jpg") === -1 && /\.png$/i.test(src)) {
+      img.setAttribute("data-tried", tried + " jpg");
+      img.src = src.replace(/\.png$/i, ".jpg");
+      return;
+    }
+
+    var wrap = img.closest(".product-img");
+    if (!wrap || wrap.classList.contains("product-img--placeholder")) return;
+
+    img.remove();
+    wrap.classList.add("product-img--placeholder");
+    wrap.setAttribute("aria-label", "Product image placeholder");
+    var span = document.createElement("span");
+    span.textContent = "Add image";
+    wrap.appendChild(span);
+  }
+
+  function initProductImages() {
+    var imgs = $$(".product-img img");
+    for (var i = 0; i < imgs.length; i++) {
+      imgs[i].addEventListener("error", function () {
+        handleProductImageError(this);
+      });
+    }
+  }
+
   function init() {
     var header = $(".site-header");
     var navToggle = $(".nav-toggle");
@@ -375,6 +410,7 @@
       });
     }
 
+    initProductImages();
     updateCartUI();
   }
 
