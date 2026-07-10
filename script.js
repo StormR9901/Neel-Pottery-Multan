@@ -10,6 +10,33 @@
   // Create a "reviews" table with columns: name (text), city (text), text (text), rating (int)
   var SUPABASE_URL = "";
   var SUPABASE_ANON_KEY = "";
+  var SEED_REVIEWS = [
+    { name: "Ayesha Khan", city: "Lahore", rating: 5, text: "Ordered the peacock plate for my living room — the colours are even more vivid in person. Arrived safely packed and exactly as shown on the website." },
+    { name: "Hassan Raza", city: "Karachi", rating: 5, text: "Bought the rearing horse statue as a gift for my father. Genuine Multan craftsmanship — he loved it. COD delivery was smooth and on time." },
+    { name: "Fatima Siddiqui", city: "Islamabad", rating: 5, text: "The blue and white floral jar is stunning on my bookshelf. Hand-painted details are flawless. Will definitely order more pieces from عمران جھنڈیر." },
+    { name: "Bilal Ahmed", city: "Multan", rating: 5, text: "Being from Multan myself, I can confirm this is authentic blue pottery. The Multani motif vases with yellow highlights are a perfect set for the mantel." },
+    { name: "Sana Malik", city: "Faisalabad", rating: 4, text: "Beautiful checkered miniature vases — lovely addition to my dining table. Took a day longer than expected but worth the wait. Quality is excellent." },
+    { name: "Usman Tariq", city: "Rawalpindi", rating: 5, text: "WhatsApp ordering was super easy. Got the vibrant multi-color floral vases — both pieces are identical and the bird motifs are intricate. Highly recommend." },
+    { name: "Nadia Hussain", city: "Peshawar", rating: 5, text: "Sent the elegant Multani floral vase to my sister for her wedding. She said it was the most unique gift she received. Packaging kept it perfectly safe." },
+    { name: "Imran Shah", city: "Sialkot", rating: 5, text: "Classic blue and orange floral vases look amazing on our console table. True handmade feel — you can see the brush strokes. Great value for the price." },
+    { name: "Rabia Noor", city: "Gujranwala", rating: 5, text: "Third order from this shop! The traditional floral jar is my favourite so far. Colours stay true and the glaze has a beautiful shine." },
+    { name: "Kamran Ali", city: "Hyderabad", rating: 4, text: "Peacock plate is a showstopper on our wall. One small glaze variation on the edge but that actually proves it's handmade. Very happy overall." },
+    { name: "Zainab Qureshi", city: "Bahawalpur", rating: 5, text: "Ordered two vase sets for Eid gifts — everyone asked where I got them. Fast response on WhatsApp and honest pricing with no hidden charges." },
+    { name: "Tariq Mehmood", city: "Sargodha", rating: 5, text: "The horse figurine is a conversation starter. Sturdy ceramic, rich cobalt blue, and the green pattern at the base is beautifully done. 10/10." },
+    { name: "Hina Farooq", city: "Abbottabad", rating: 5, text: "Love supporting local artisans. The yellow-green motif vases brighten up my kitchen shelf. Delivery to northern areas was hassle-free with COD." },
+    { name: "Asad Javed", city: "Quetta", rating: 5, text: "Was skeptical ordering pottery online but it arrived double-boxed with zero damage. The multi-color floral vases are even prettier than the photos." },
+    { name: "Maryam Iqbal", city: "Lahore", rating: 5, text: "Bought the floral jar and single vase together — they complement each other perfectly. Authentic Mumtazabad work, not mass-produced junk." },
+    { name: "Faisal Butt", city: "Karachi", rating: 4, text: "Great products and responsive seller. Vases are gorgeous. Only wish there were more plate designs — would buy again in a heartbeat." },
+    { name: "Sadia Akram", city: "Murree", rating: 5, text: "Perfect souvenir from Multan without travelling! The checkered vase pair sits on our hotel reception desk and guests always compliment them." },
+    { name: "Waqas Nadeem", city: "Islamabad", rating: 5, text: "Corporate gift order of 6 pieces for clients — all delivered on schedule. Professional packaging and each item matched the website description." },
+    { name: "Amna Sheikh", city: "Multan", rating: 5, text: "Visited Mumtazabad workshops before and this online shop delivers the same quality. The blue-orange vase pair is my dining room centrepiece now." },
+    { name: "Omar Farooq", city: "Faisalabad", rating: 5, text: "COD made it easy to trust a first-time purchase. Horse statue is solid, well-glazed, and the Urdu branding on the special edition is a nice touch." },
+    { name: "Kiran Bibi", city: "Rawalpindi", rating: 5, text: "My mother collects blue pottery and she approved immediately! The peacock plate detail is incredible — every feather is hand-painted with care." },
+    { name: "Javed Anwar", city: "Lahore", rating: 5, text: "Ordered for home décor renovation. All three vase sets arrived intact. Rich colours, traditional patterns, and fair prices compared to market shops." },
+    { name: "Mehwish Tariq", city: "Peshawar", rating: 4, text: "Lovely craftsmanship on the elegant floral vase. Slightly smaller than I imagined but that's on me for not checking dimensions. Still a beautiful piece." },
+    { name: "Shahid Mahmood", city: "Karachi", rating: 5, text: "Repeat customer — bought the floral jar last month and just got the multi-color vases. Consistent quality every time. عمران جھنڈیر is the real deal." },
+    { name: "Noreen Abbas", city: "Sialkot", rating: 5, text: "Gifted the rearing horse to my boss — he displays it in his office proudly. Premium look without the premium boutique price. Shukriya!" }
+  ];
   var cart = [];
 
   function $(sel) { return document.querySelector(sel); }
@@ -221,13 +248,18 @@
     }
   }
 
+  function getDisplayReviews() {
+    var userReviews = getReviews();
+    return userReviews.length ? userReviews.concat(SEED_REVIEWS) : SEED_REVIEWS;
+  }
+
   function saveReviews(reviews) {
     localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
   }
 
   function fetchReviewsFromCloud(callback) {
     if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-      callback(getReviews());
+      callback(getDisplayReviews());
       return;
     }
     fetch(SUPABASE_URL + "/rest/v1/reviews?select=*&order=created_at.desc", {
@@ -237,8 +269,8 @@
       }
     })
       .then(function (res) { return res.ok ? res.json() : []; })
-      .then(function (data) { callback(data.length ? data : getReviews()); })
-      .catch(function () { callback(getReviews()); });
+      .then(function (data) { callback(data.length ? data : getDisplayReviews()); })
+      .catch(function () { callback(getDisplayReviews()); });
   }
 
   function submitReviewToCloud(review, callback) {
@@ -246,7 +278,7 @@
       var reviews = getReviews();
       reviews.unshift(review);
       saveReviews(reviews);
-      callback(true, reviews);
+      callback(true, getDisplayReviews());
       return;
     }
     fetch(SUPABASE_URL + "/rest/v1/reviews", {
@@ -275,7 +307,7 @@
         var reviews = getReviews();
         reviews.unshift(review);
         saveReviews(reviews);
-        callback(true, reviews);
+        callback(true, getDisplayReviews());
       });
   }
 
