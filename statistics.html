@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a2340" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Sales statistics dashboard for عمران جھنڈیر blue pottery store." />
+  <title>Sales Dashboard | عمران جھنڈیر</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%231a4a7a'/><circle cx='50' cy='50' r='28' fill='none' stroke='%23fff' stroke-width='3'/><circle cx='50' cy='38' r='7' fill='%2360a5fa'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="stats-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="stats-header" id="top">
+    <nav class="stats-nav container" aria-label="Statistics navigation">
+      <a href="./index.html" class="logo">
+        <svg class="logo-svg" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="url(#lg-stats)"/><circle cx="18" cy="18" r="10" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><circle cx="18" cy="13" r="3" fill="rgba(255,255,255,.8)"/><defs><linearGradient id="lg-stats" x1="0" y1="0" x2="36" y2="36"><stop offset="0%" stop-color="#3b82c4"/><stop offset="100%" stop-color="#0f2d52"/></linearGradient></defs></svg>
+        <span class="logo-text logo-text--urdu" lang="ur">عمران جھنڈیر</span>
+      </a>
+      <div class="stats-nav-actions">
+        <span class="stats-nav-badge">Sales Dashboard</span>
+        <a href="./index.html" class="btn btn-outline btn-stats-back">← Back to Store</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="stats-hero">
+      <div class="container">
+        <p class="eyebrow stats-eyebrow">Store Analytics</p>
+        <h1>Website Sales Statistics</h1>
+        <p class="stats-hero-lead">Complete overview of all orders, revenue, and product performance for <span lang="ur">عمران جھنڈیر</span>.</p>
+        <p class="stats-updated" id="stats-updated"></p>
+      </div>
+    </section>
+
+    <section class="stats-kpis section">
+      <div class="container">
+        <div class="stats-kpi-grid">
+          <article class="stats-kpi-card">
+            <span class="stats-kpi-icon">💰</span>
+            <p class="stats-kpi-label">Total Revenue</p>
+            <strong class="stats-kpi-value" id="kpi-revenue">—</strong>
+          </article>
+          <article class="stats-kpi-card">
+            <span class="stats-kpi-icon">📦</span>
+            <p class="stats-kpi-label">Total Orders</p>
+            <strong class="stats-kpi-value" id="kpi-orders">—</strong>
+          </article>
+          <article class="stats-kpi-card">
+            <span class="stats-kpi-icon">🏺</span>
+            <p class="stats-kpi-label">Items Sold</p>
+            <strong class="stats-kpi-value" id="kpi-items">—</strong>
+          </article>
+          <article class="stats-kpi-card">
+            <span class="stats-kpi-icon">📊</span>
+            <p class="stats-kpi-label">Avg. Order Value</p>
+            <strong class="stats-kpi-value" id="kpi-avg">—</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-charts section section--cream">
+      <div class="container">
+        <div class="stats-charts-grid">
+          <article class="stats-panel">
+            <h2>Monthly Revenue</h2>
+            <div class="stats-monthly-chart" id="stats-monthly-chart"></div>
+          </article>
+          <article class="stats-panel">
+            <h2>Top Selling Products</h2>
+            <div class="stats-top-products" id="stats-top-products"></div>
+          </article>
+          <article class="stats-panel">
+            <h2>Sales by City</h2>
+            <div class="stats-cities" id="stats-cities"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-table-section section">
+      <div class="container">
+        <div class="stats-table-header">
+          <div>
+            <h2>All Sales</h2>
+            <p id="stats-order-count">Loading orders…</p>
+          </div>
+          <div class="stats-filters">
+            <input type="search" id="stats-search" placeholder="Search orders, customers, products…" aria-label="Search sales" />
+            <select id="stats-status-filter" aria-label="Filter by status">
+              <option value="all">All statuses</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Processing">Processing</option>
+            </select>
+          </div>
+        </div>
+        <div class="stats-table-wrap">
+          <table class="stats-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Customer</th>
+                <th>City</th>
+                <th>Products</th>
+                <th>Total</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="stats-sales-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="stats-footer">
+    <div class="container stats-footer-inner">
+      <p>&copy; 2026 <span lang="ur">عمران جھنڈیر</span> · Internal sales dashboard</p>
+      <a href="./index.html">Return to storefront</a>
+    </div>
+  </footer>
+
+  <script src="./statistics.js"></script>
+</body>
+</html>

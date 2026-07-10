@@ -6,6 +6,7 @@
   // Set your email here — contact form & review notifications go here (free via FormSubmit.co)
   var OWNER_EMAIL = "";
   var REVIEWS_KEY = "neel-pottery-reviews";
+  var SALES_KEY = "neel-pottery-sales";
   // Optional: Supabase for reviews visible to all visitors (free at supabase.com)
   // Create a "reviews" table with columns: name (text), city (text), text (text), rating (int)
   var SUPABASE_URL = "";
@@ -44,6 +45,43 @@
 
   function formatPrice(n) {
     return "Rs. " + n.toLocaleString("en-PK");
+  }
+
+  function recordSale(cartItems) {
+    if (!cartItems || !cartItems.length) return;
+    var stored = [];
+    try {
+      var raw = localStorage.getItem(SALES_KEY);
+      stored = raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      stored = [];
+    }
+
+    var items = [];
+    var total = 0;
+    for (var i = 0; i < cartItems.length; i++) {
+      items.push({
+        name: cartItems[i].name,
+        qty: cartItems[i].qty,
+        price: cartItems[i].price
+      });
+      total += cartItems[i].price * cartItems[i].qty;
+    }
+
+    var order = {
+      id: "ORD-" + (1031 + stored.length),
+      date: new Date().toISOString().split("T")[0],
+      customer: "WhatsApp Customer",
+      city: "Pakistan",
+      items: items,
+      total: total,
+      status: "Processing"
+    };
+
+    stored.unshift(order);
+    try {
+      localStorage.setItem(SALES_KEY, JSON.stringify(stored));
+    } catch (e) {}
   }
 
   function showToast(msg) {
@@ -651,6 +689,7 @@
         var total = 0;
         for (var t = 0; t < cart.length; t++) total += cart[t].price * cart[t].qty;
         msg += "\nTotal: " + formatPrice(total) + "\n\nPlease confirm availability and delivery.";
+        recordSale(cart.slice());
         window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
         closeCart();
       });
