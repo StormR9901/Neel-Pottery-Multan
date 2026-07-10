@@ -3,39 +3,36 @@
 
   var BRAND_NAME = "عمران جھنڈیر";
   var SALES_KEY = "neel-pottery-sales";
-  var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  var MONTHS = ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   var SEED_SALES = [
-    { id: "ORD-1001", date: "2026-06-18", customer: "Sadia Akram", city: "Karachi", items: [{ name: "Traditional Blue and White Floral Jar", qty: 1, price: 1450 }], total: 1450, status: "Delivered" },
-    { id: "ORD-1002", date: "2026-06-18", customer: "Imran Shah", city: "Islamabad", items: [{ name: "Classic Blue & Orange Floral Vases (Set of 2)", qty: 1, price: 1300 }], total: 1300, status: "Delivered" },
-    { id: "ORD-1003", date: "2026-06-19", customer: "Nadia Hussain", city: "Lahore", items: [{ name: "Elegant Multani Floral Ceramic Vase", qty: 2, price: 1100 }], total: 2200, status: "Delivered" },
-    { id: "ORD-1004", date: "2026-06-21", customer: "Bilal Ahmed", city: "Multan", items: [{ name: "Multani Motif Vases with Yellow Highlights (Set of 2)", qty: 1, price: 1200 }, { name: "Checkered Miniature Vases (Set of 2)", qty: 1, price: 1150 }], total: 2350, status: "Delivered" },
-    { id: "ORD-1005", date: "2026-06-21", customer: "Hina Farooq", city: "Peshawar", items: [{ name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 1350, status: "Delivered" },
-    { id: "ORD-1006", date: "2026-06-21", customer: "Kamran Ali", city: "Faisalabad", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 1, price: 1250 }], total: 1250, status: "Delivered" },
-    { id: "ORD-1007", date: "2026-06-21", customer: "Maryam Iqbal", city: "Rawalpindi", items: [{ name: "Vibrant Multi-Color Floral Vases (Set of 2)", qty: 1, price: 1500 }], total: 1500, status: "Delivered" },
-    { id: "ORD-1008", date: "2026-06-22", customer: "Tariq Mehmood", city: "Sialkot", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 2, price: 1250 }], total: 2500, status: "Delivered" },
-    { id: "ORD-1009", date: "2026-06-24", customer: "Ayesha Khan", city: "Lahore", items: [{ name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 1350, status: "Delivered" },
-    { id: "ORD-1010", date: "2026-06-27", customer: "Waqas Nadeem", city: "Islamabad", items: [{ name: "Traditional Blue and White Floral Jar", qty: 2, price: 1450 }, { name: "Elegant Multani Floral Ceramic Vase", qty: 2, price: 1100 }], total: 5100, status: "Delivered" },
-    { id: "ORD-1011", date: "2026-06-27", customer: "Fatima Siddiqui", city: "Quetta", items: [{ name: "Traditional Blue and White Floral Jar", qty: 1, price: 1450 }], total: 1450, status: "Delivered" },
-    { id: "ORD-1012", date: "2026-06-28", customer: "Omar Farooq", city: "Hyderabad", items: [{ name: "Checkered Miniature Vases (Set of 2)", qty: 1, price: 1150 }], total: 1150, status: "Delivered" },
-    { id: "ORD-1013", date: "2026-06-28", customer: "Rabia Noor", city: "Gujranwala", items: [{ name: "Traditional Blue and White Floral Jar", qty: 1, price: 1450 }, { name: "Classic Blue & Orange Floral Vases (Set of 2)", qty: 1, price: 1300 }], total: 2750, status: "Delivered" },
-    { id: "ORD-1014", date: "2026-06-28", customer: "Hassan Raza", city: "Karachi", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 1, price: 1250 }], total: 1250, status: "Delivered" },
-    { id: "ORD-1015", date: "2026-06-30", customer: "Zainab Qureshi", city: "Bahawalpur", items: [{ name: "Multani Motif Vases with Yellow Highlights (Set of 2)", qty: 2, price: 1200 }, { name: "Classic Blue & Orange Floral Vases (Set of 2)", qty: 1, price: 1300 }], total: 3700, status: "Delivered" },
-    { id: "ORD-1016", date: "2026-07-01", customer: "Asad Javed", city: "Abbottabad", items: [{ name: "Vibrant Multi-Color Floral Vases (Set of 2)", qty: 1, price: 1500 }], total: 1500, status: "Delivered" },
-    { id: "ORD-1017", date: "2026-07-01", customer: "Sana Malik", city: "Multan", items: [{ name: "Checkered Miniature Vases (Set of 2)", qty: 1, price: 1150 }], total: 1150, status: "Delivered" },
-    { id: "ORD-1018", date: "2026-07-01", customer: "Javed Anwar", city: "Lahore", items: [{ name: "Multani Motif Vases with Yellow Highlights (Set of 2)", qty: 1, price: 1200 }, { name: "Classic Blue & Orange Floral Vases (Set of 2)", qty: 1, price: 1300 }, { name: "Elegant Multani Floral Ceramic Vase", qty: 1, price: 1100 }], total: 3600, status: "Delivered" },
-    { id: "ORD-1019", date: "2026-07-03", customer: "Kiran Bibi", city: "Rawalpindi", items: [{ name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 1350, status: "Delivered" },
-    { id: "ORD-1020", date: "2026-07-04", customer: "Usman Tariq", city: "Peshawar", items: [{ name: "Vibrant Multi-Color Floral Vases (Set of 2)", qty: 1, price: 1500 }], total: 1500, status: "Delivered" },
-    { id: "ORD-1021", date: "2026-07-04", customer: "Amna Sheikh", city: "Multan", items: [{ name: "Classic Blue & Orange Floral Vases (Set of 2)", qty: 1, price: 1300 }], total: 1300, status: "Delivered" },
-    { id: "ORD-1022", date: "2026-07-05", customer: "Faisal Butt", city: "Karachi", items: [{ name: "Elegant Multani Floral Ceramic Vase", qty: 1, price: 1100 }], total: 1100, status: "Delivered" },
-    { id: "ORD-1023", date: "2026-07-06", customer: "Mehwish Tariq", city: "Sargodha", items: [{ name: "Elegant Multani Floral Ceramic Vase", qty: 1, price: 1100 }], total: 1100, status: "Delivered" },
-    { id: "ORD-1024", date: "2026-07-07", customer: "Shahid Mahmood", city: "Lahore", items: [{ name: "Traditional Blue and White Floral Jar", qty: 1, price: 1450 }, { name: "Vibrant Multi-Color Floral Vases (Set of 2)", qty: 1, price: 1500 }], total: 2950, status: "Delivered" },
-    { id: "ORD-1025", date: "2026-07-07", customer: "Noreen Abbas", city: "Sialkot", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 1, price: 1250 }], total: 1250, status: "Delivered" },
-    { id: "ORD-1026", date: "2026-07-08", customer: "Kamran Ali", city: "Faisalabad", items: [{ name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 1350, status: "Shipped" },
-    { id: "ORD-1027", date: "2026-07-08", customer: "Bilal Ahmed", city: "Multan", items: [{ name: "Multani Motif Vases with Yellow Highlights (Set of 2)", qty: 1, price: 1200 }], total: 1200, status: "Shipped" },
-    { id: "ORD-1028", date: "2026-07-10", customer: "Ayesha Khan", city: "Lahore", items: [{ name: "Checkered Miniature Vases (Set of 2)", qty: 2, price: 1150 }], total: 2300, status: "Processing" },
-    { id: "ORD-1029", date: "2026-07-10", customer: "Hassan Raza", city: "Karachi", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 1, price: 1250 }, { name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 2600, status: "Processing" },
-    { id: "ORD-1030", date: "2026-07-10", customer: "Fatima Siddiqui", city: "Islamabad", items: [{ name: "Traditional Blue and White Floral Jar", qty: 1, price: 1450 }], total: 1450, status: "Processing" }
+    { id: "ORD-1001", date: "2026-06-21", customer: "Bilal Ahmed", city: "Multan", items: [{ name: "Multani Motif Vases with Yellow Highlights (Set of 2)", qty: 1, price: 1200 }, { name: "Checkered Miniature Vases (Set of 2)", qty: 1, price: 1150 }], total: 2350, status: "Delivered" },
+    { id: "ORD-1002", date: "2026-06-21", customer: "Hina Farooq", city: "Peshawar", items: [{ name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 1350, status: "Delivered" },
+    { id: "ORD-1003", date: "2026-06-21", customer: "Kamran Ali", city: "Faisalabad", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 1, price: 1250 }], total: 1250, status: "Delivered" },
+    { id: "ORD-1004", date: "2026-06-21", customer: "Maryam Iqbal", city: "Rawalpindi", items: [{ name: "Vibrant Multi-Color Floral Vases (Set of 2)", qty: 1, price: 1500 }], total: 1500, status: "Delivered" },
+    { id: "ORD-1005", date: "2026-06-22", customer: "Tariq Mehmood", city: "Sialkot", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 2, price: 1250 }], total: 2500, status: "Delivered" },
+    { id: "ORD-1006", date: "2026-06-24", customer: "Ayesha Khan", city: "Lahore", items: [{ name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 1350, status: "Delivered" },
+    { id: "ORD-1007", date: "2026-06-27", customer: "Waqas Nadeem", city: "Islamabad", items: [{ name: "Traditional Blue and White Floral Jar", qty: 2, price: 1450 }, { name: "Elegant Multani Floral Ceramic Vase", qty: 2, price: 1100 }], total: 5100, status: "Delivered" },
+    { id: "ORD-1008", date: "2026-06-27", customer: "Fatima Siddiqui", city: "Quetta", items: [{ name: "Traditional Blue and White Floral Jar", qty: 1, price: 1450 }], total: 1450, status: "Delivered" },
+    { id: "ORD-1009", date: "2026-06-28", customer: "Omar Farooq", city: "Hyderabad", items: [{ name: "Checkered Miniature Vases (Set of 2)", qty: 1, price: 1150 }], total: 1150, status: "Delivered" },
+    { id: "ORD-1010", date: "2026-06-28", customer: "Rabia Noor", city: "Gujranwala", items: [{ name: "Traditional Blue and White Floral Jar", qty: 1, price: 1450 }, { name: "Classic Blue & Orange Floral Vases (Set of 2)", qty: 1, price: 1300 }], total: 2750, status: "Delivered" },
+    { id: "ORD-1011", date: "2026-06-28", customer: "Hassan Raza", city: "Karachi", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 1, price: 1250 }], total: 1250, status: "Delivered" },
+    { id: "ORD-1012", date: "2026-06-30", customer: "Zainab Qureshi", city: "Bahawalpur", items: [{ name: "Multani Motif Vases with Yellow Highlights (Set of 2)", qty: 2, price: 1200 }, { name: "Classic Blue & Orange Floral Vases (Set of 2)", qty: 1, price: 1300 }], total: 3700, status: "Delivered" },
+    { id: "ORD-1013", date: "2026-07-01", customer: "Asad Javed", city: "Abbottabad", items: [{ name: "Vibrant Multi-Color Floral Vases (Set of 2)", qty: 1, price: 1500 }], total: 1500, status: "Delivered" },
+    { id: "ORD-1014", date: "2026-07-01", customer: "Sana Malik", city: "Multan", items: [{ name: "Checkered Miniature Vases (Set of 2)", qty: 1, price: 1150 }], total: 1150, status: "Delivered" },
+    { id: "ORD-1015", date: "2026-07-01", customer: "Javed Anwar", city: "Lahore", items: [{ name: "Multani Motif Vases with Yellow Highlights (Set of 2)", qty: 1, price: 1200 }, { name: "Classic Blue & Orange Floral Vases (Set of 2)", qty: 1, price: 1300 }, { name: "Elegant Multani Floral Ceramic Vase", qty: 1, price: 1100 }], total: 3600, status: "Delivered" },
+    { id: "ORD-1016", date: "2026-07-03", customer: "Kiran Bibi", city: "Rawalpindi", items: [{ name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 1350, status: "Delivered" },
+    { id: "ORD-1017", date: "2026-07-04", customer: "Usman Tariq", city: "Peshawar", items: [{ name: "Vibrant Multi-Color Floral Vases (Set of 2)", qty: 1, price: 1500 }], total: 1500, status: "Delivered" },
+    { id: "ORD-1018", date: "2026-07-04", customer: "Amna Sheikh", city: "Multan", items: [{ name: "Classic Blue & Orange Floral Vases (Set of 2)", qty: 1, price: 1300 }], total: 1300, status: "Delivered" },
+    { id: "ORD-1019", date: "2026-07-05", customer: "Faisal Butt", city: "Karachi", items: [{ name: "Elegant Multani Floral Ceramic Vase", qty: 1, price: 1100 }], total: 1100, status: "Delivered" },
+    { id: "ORD-1020", date: "2026-07-06", customer: "Mehwish Tariq", city: "Sargodha", items: [{ name: "Elegant Multani Floral Ceramic Vase", qty: 1, price: 1100 }], total: 1100, status: "Delivered" },
+    { id: "ORD-1021", date: "2026-07-07", customer: "Shahid Mahmood", city: "Lahore", items: [{ name: "Traditional Blue and White Floral Jar", qty: 1, price: 1450 }, { name: "Vibrant Multi-Color Floral Vases (Set of 2)", qty: 1, price: 1500 }], total: 2950, status: "Delivered" },
+    { id: "ORD-1022", date: "2026-07-07", customer: "Noreen Abbas", city: "Sialkot", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 1, price: 1250 }], total: 1250, status: "Delivered" },
+    { id: "ORD-1023", date: "2026-07-08", customer: "Kamran Ali", city: "Faisalabad", items: [{ name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 1350, status: "Shipped" },
+    { id: "ORD-1024", date: "2026-07-08", customer: "Bilal Ahmed", city: "Multan", items: [{ name: "Multani Motif Vases with Yellow Highlights (Set of 2)", qty: 1, price: 1200 }], total: 1200, status: "Shipped" },
+    { id: "ORD-1025", date: "2026-07-10", customer: "Ayesha Khan", city: "Lahore", items: [{ name: "Checkered Miniature Vases (Set of 2)", qty: 2, price: 1150 }], total: 2300, status: "Processing" },
+    { id: "ORD-1026", date: "2026-07-10", customer: "Hassan Raza", city: "Karachi", items: [{ name: "Ceramic Rearing Horse Statue (عمران جھنڈیر سپیشل)", qty: 1, price: 1250 }, { name: "Hand-Painted Peacock Ceramic Plate", qty: 1, price: 1350 }], total: 2600, status: "Processing" },
+    { id: "ORD-1027", date: "2026-07-10", customer: "Fatima Siddiqui", city: "Islamabad", items: [{ name: "Traditional Blue and White Floral Jar", qty: 1, price: 1450 }], total: 1450, status: "Processing" }
   ];
 
   function $(sel) { return document.querySelector(sel); }
